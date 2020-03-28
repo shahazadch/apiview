@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width:80%;
+   text-align: center;
+
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+{#{% block javascript %}#}
+<script type="text/javascript">
+
+    $(function() {
+        $(document).ready(function() {
+        {% for k,y in newsdata.items %}
+            {{ k }}-{{ y }}
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = {{ k }};
+            cell2.innerHTML = {{ y }};
+        {% endfor %}
+        });
+
+    });
+
+</script>
+{#{% endblock %}#}
+<button type="button" onclick="myFunction()">Try it</button>
+
+<table id="myTable" align="center">
+
+
+  <tr>
+      <th>Country</th>
+      <th>currency</th>
+  </tr>
+
+
+</table>
+</body>
+</html>
